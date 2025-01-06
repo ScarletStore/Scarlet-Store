@@ -35,6 +35,13 @@ body {
     margin-bottom: 10px;
 }
 
+.trust-section img {
+    width: 150px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
 .trust-section p {
     margin-top: 5px;
     font-size: 16px;
@@ -75,6 +82,13 @@ body {
 .product-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+    width: 100%;
+    border-bottom: 2px solid #8b0000;
+    margin-bottom: 15px;
+    border-radius: 5px;
 }
 
 .product-card h3 {
