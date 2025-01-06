@@ -1,0 +1,238 @@
+/* Resetando padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modo Claro */
+body.light-mode {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: #8b0000;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-text {
+    font-size: 3rem;
+    color: #ff4747;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff4747, 0 0 20px #8b0000;
+    margin-bottom: 10px;
+    animation: bounce 2s infinite;
+}
+
+.trust-section img {
+    width: 150px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.trust-section p {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Efeito de animação para o logo */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Toggle de Modo Claro/escuro */
+.mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Emoji do Modo Claro/Escuro */
+.mode-icon {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Seção de Produtos */
+.main-content {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 30px;
+    color: #ff4747;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: #2a2a2a;
+    border: 2px solid #8b0000;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+    width: 100%;
+    border-bottom: 2px solid #8b0000;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.product-card h3 {
+    font-size: 22px;
+    color: #ff4747;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    color: #fff;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.info {
+    font-size: 16px;
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.btn-buy {
+    background-color: #ff4747;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-buy:hover {
+    background-color: #c74d49;
+}
+
+/* Rodapé */
+.footer {
+    background-color: #1e1e1e;
+    padding: 20px;
+    color: white;
+}
+
+.social-links {
+    margin-bottom: 10px;
+}
+
+.social-link {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.social-link:hover {
+    color: #ff4747;
+}
