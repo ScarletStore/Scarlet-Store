@@ -10,13 +10,7 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #1e1e1e;
     color: #fff;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Modo Claro */
-body.light-mode {
-    background-color: #f4f4f4;
-    color: #333;
+    overflow-x: hidden;
 }
 
 /* Cabeçalho */
@@ -39,7 +33,6 @@ body.light-mode {
     font-weight: bold;
     text-shadow: 0 0 10px #ff4747, 0 0 20px #8b0000;
     margin-bottom: 10px;
-    animation: bounce 2s infinite;
 }
 
 .trust-section img {
@@ -53,78 +46,6 @@ body.light-mode {
     margin-top: 5px;
     font-size: 16px;
     color: #fff;
-}
-
-/* Efeito de animação para o logo */
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-/* Toggle de Modo Claro/escuro */
-.mode-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    border-radius: 50%;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-}
-
-input:checked + .slider {
-    background-color: #4caf50;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-/* Emoji do Modo Claro/Escuro */
-.mode-icon {
-    font-size: 1.5rem;
-    margin-left: 10px;
-    transition: transform 0.3s ease;
 }
 
 /* Seção de Produtos */
@@ -192,34 +113,31 @@ input:checked + .slider:before {
     color: #888;
 }
 
-.info {
-    font-size: 16px;
-    color: #00ff00;
-    font-weight: bold;
-}
-
-.btn-buy {
+.add-to-cart-btn,
+.discord-btn {
     background-color: #ff4747;
     color: white;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
     text-decoration: none;
+    border-radius: 5px;
     font-size: 16px;
-    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
     display: inline-block;
-    transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
-.btn-buy:hover {
-    background-color: #c74d49;
+.add-to-cart-btn:hover,
+.discord-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
 }
 
 /* Rodapé */
 .footer {
-    background-color: #1e1e1e;
-    padding: 20px;
+    background-color: #8b0000;
     color: white;
+    padding: 20px;
+    text-align: center;
 }
 
 .social-links {
@@ -227,12 +145,17 @@ input:checked + .slider:before {
 }
 
 .social-link {
-    color: #fff;
+    color: white;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .social-link:hover {
-    color: #ff4747;
+    background-color: white;
+    color: #8b0000;
 }
