@@ -1,76 +1,147 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Scarlet Store</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+/* Resetando padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <!-- Header com logo e selo de confiança -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <h1 class="logo-text">Scarlet Store</h1>
-            </div>
-            <div class="trust-section">
-                <img src="https://via.placeholder.com/150" alt="Site Confiável">
-                <p>Veja se somos de confiança aqui!</p>
-            </div>
-        </div>
-    </header>
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+    overflow-x: hidden;
+}
 
-    <!-- Seção Principal -->
-    <main class="main-content">
-        <!-- Produtos -->
-        <section class="products">
-            <h2 class="section-title">Produtos em Promoção</h2>
-            <div class="product-list">
-                <!-- Clonador de Servidores -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300" alt="Clonador de Servidores">
-                    <h3>Clonador de Servidores</h3>
-                    <p class="description">Ferramenta poderosa para clonar servidores no Discord. Aproveite nossa oferta!</p>
-                    <p class="price"><span class="old-price">R$ 30,00</span> R$ 15,00</p>
-                    <a href="https://discord.gg/qnyQDMp7NH" class="add-to-cart-btn" target="_blank">Acesse o Discord</a>
-                </div>
+/* Cabeçalho */
+.header {
+    background-color: #8b0000;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
 
-                <!-- XIT Painel Permanente Ant Ban Free Fire -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300" alt="XIT Painel Permanente Ant Ban Free Fire">
-                    <h3>XIT Painel Permanente Ant Ban Free Fire</h3>
-                    <p class="description">Painel avançado para Free Fire, com proteção contra banimentos!</p>
-                    <p class="price"><span class="old-price">R$ 50,00</span> R$ 15,00</p>
-                    <a href="https://discord.gg/qnyQDMp7NH" class="add-to-cart-btn" target="_blank">Acesse o Discord</a>
-                </div>
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-                <!-- Conta Nitro 1 Mês -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300" alt="Conta Nitro 1 mês">
-                    <h3>Conta Nitro 1 mês</h3>
-                    <p class="description">Ganhe benefícios exclusivos no Discord com a conta Nitro por 1 mês!</p>
-                    <p class="price">R$ 5,00</p>
-                    <a href="https://discord.gg/qnyQDMp7NH" class="add-to-cart-btn" target="_blank">Acesse o Discord</a>
-                </div>
-            </div>
-        </section>
+.logo-text {
+    font-size: 3rem;
+    color: #ff4747;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff4747, 0 0 20px #8b0000;
+    margin-bottom: 10px;
+}
 
-        <!-- Botão de Acesso ao Discord -->
-        <div class="discord-section">
-            <a href="https://discord.gg/qnyQDMp7NH" class="discord-btn" target="_blank">Acesse nosso Discord</a>
-        </div>
-    </main>
+.trust-section p {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+}
 
-    <!-- Footer com links sociais -->
-    <footer class="footer">
-        <div class="social-links">
-            <a href="#" class="social-link">Instagram</a>
-            <a href="https://discord.gg/qnyQDMp7NH" class="social-link">Discord</a>
-        </div>
-        <p>© 2025 Scarlet Store - Todos os direitos reservados.</p>
-    </footer>
+/* Seção de Produtos */
+.main-content {
+    padding: 40px 20px;
+    text-align: center;
+}
 
-</body>
-</html>
+.section-title {
+    font-size: 30px;
+    color: #ff4747;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background-color: #2a2a2a;
+    border: 2px solid #8b0000;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-card h3 {
+    font-size: 22px;
+    color: #ff4747;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 14px;
+    color: #bbb;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    color: #fff;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.add-to-cart-btn,
+.discord-btn {
+    background-color: #ff4747;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.add-to-cart-btn:hover,
+.discord-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* Rodapé */
+.footer {
+    background-color: #8b0000;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.social-links {
+    margin-bottom: 10px;
+}
+
+.social-link {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.social-link:hover {
+    background-color: white;
+    color: #8b0000;
+}
