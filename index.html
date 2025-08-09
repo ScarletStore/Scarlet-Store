@@ -3,70 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Scarlet Store</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Minha Biografia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #111827;
+            background-image: radial-gradient(circle, #2a3340 1px, transparent 1px), radial-gradient(circle, #2a3340 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+
+        /* Animação para os botões piscarem */
+        @keyframes pulse-once {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse-once {
+            animation: pulse-once 1s ease-in-out infinite;
+        }
+
+        /* Animação para o flash branco, agora mais forte */
+        @keyframes white-flash {
+            0%, 100% { filter: brightness(100%); }
+            50% { filter: brightness(500%); } /* Aumenta o brilho para um flash mais intenso */
+        }
+        .animate-white-flash {
+            animation: white-flash 0.1s steps(1) infinite;
+        }
+
+        /* Container que cobre a tela toda */
+        .full-screen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            z-index: 100;
+            visibility: hidden; /* Começa invisível */
+            opacity: 0;
+            transition: opacity 0.3s ease-in;
+        }
+        .full-screen-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
-<body>
+<body class="text-white flex items-center justify-center min-h-screen font-sans select-none">
 
-    <!-- Header com logo e selo de confiança -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <h1 class="logo-text">Scarlet Store</h1>
-            </div>
-            <div class="trust-section">
-                <p>Veja se somos de confiança aqui!</p>
-            </div>
+    <!-- Conteúdo inicial no estilo Linktree -->
+    <div id="initial-content" class="flex flex-col items-center p-6 sm:p-8 bg-gray-800 rounded-2xl shadow-2xl border border-gray-700 max-w-sm mx-auto w-11/12 sm:w-full">
+        <!-- Foto de perfil atualizada -->
+        <img class="w-24 h-24 sm:w-32 sm:h-32 rounded-full border-4 border-fuchsia-500 mb-4 shadow-lg" src="https://yt3.googleusercontent.com/HR4gNce_qjEsHhtPwrNXxK2Q528i5-6aLYaki3kziCfWflQaeZRzIeVbAvMUks5PO2NKb1_Skg=s900-c-k-c0x00ffffff-no-rj" alt="Foto de Perfil">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-100 mb-2">@cucuz22</h1>
+        <p class="text-gray-400 text-sm sm:text-base text-center mb-8">
+            Bem-vindo(a) à minha página! Aqui você encontra meus links e conteúdos favoritos.
+        </p>
+        
+        <div class="space-y-4 w-full">
+            <!-- Todos os botões agora ativam o susto -->
+            <button class="scare-trigger bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 animate-pulse-once text-lg w-full">
+                Meu Vídeo Favorito
+            </button>
+            
+            <button class="scare-trigger bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 text-lg w-full">
+                Meu Instagram
+            </button>
+            <button class="scare-trigger bg-gradient-to-r from-yellow-500 to-orange-600 hover:from-yellow-600 hover:to-orange-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 text-lg w-full">
+                Meu Twitter
+            </button>
+            <button class="scare-trigger bg-gradient-to-r from-fuchsia-500 to-pink-600 hover:from-fuchsia-600 hover:to-pink-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105 text-lg w-full">
+                Meu Portfólio
+            </button>
         </div>
-    </header>
+    </div>
 
-    <!-- Seção Principal -->
-    <main class="main-content">
-        <!-- Produtos -->
-        <section class="products">
-            <h2 class="section-title">Produtos em Promoção</h2>
-            <div class="product-list">
-                <!-- Clonador de Servidores -->
-                <div class="product-card">
-                    <h3>Clonador de Servidores</h3>
-                    <p class="description">Ferramenta poderosa para clonar servidores no Discord. Aproveite nossa oferta!</p>
-                    <p class="price"><span class="old-price">R$ 30,00</span> R$ 15,00</p>
-                    <a href="https://discord.gg/qnyQDMp7NH" class="add-to-cart-btn" target="_blank">Acesse o Discord</a>
-                </div>
+    <!-- Container do susto (inicialmente invisível) -->
+    <div id="scare-container" class="full-screen-overlay">
+        <!-- O GIF principal preenche a tela inteira -->
+        <img id="scare-gif" src="https://i.pinimg.com/originals/80/93/e5/8093e5c7bcb80159ab384bfd2d30ed07.gif" alt="Susto" class="w-full h-full object-cover animate-white-flash" />
+    </div>
 
-                <!-- XIT Painel Permanente Ant Ban Free Fire -->
-                <div class="product-card">
-                    <h3>XIT Painel Permanente Ant Ban Free Fire</h3>
-                    <p class="description">Painel avançado para Free Fire, com proteção contra banimentos!</p>
-                    <p class="price"><span class="old-price">R$ 50,00</span> R$ 15,00</p>
-                    <a href="https://discord.gg/qnyQDMp7NH" class="add-to-cart-btn" target="_blank">Acesse o Discord</a>
-                </div>
+    <!-- Elemento de áudio para o susto -->
+    <audio id="scare-audio" src="mp3/susto.mp3" loop></audio>
 
-                <!-- Conta Nitro 1 Mês -->
-                <div class="product-card">
-                    <h3>Conta Nitro 1 mês</h3>
-                    <p class="description">Ganhe benefícios exclusivos no Discord com a conta Nitro por 1 mês!</p>
-                    <p class="price">R$ 5,00</p>
-                    <a href="https://discord.gg/qnyQDMp7NH" class="add-to-cart-btn" target="_blank">Acesse o Discord</a>
-                </div>
-            </div>
-        </section>
+    <script>
+        // Referências para os elementos do DOM
+        const scareButtons = document.querySelectorAll('.scare-trigger');
+        const initialContent = document.getElementById('initial-content');
+        const scareContainer = document.getElementById('scare-container');
+        const scareAudio = document.getElementById('scare-audio');
 
-        <!-- Botão de Acesso ao Discord -->
-        <div class="discord-section">
-            <a href="https://discord.gg/qnyQDMp7NH" class="discord-btn" target="_blank">Acesse nosso Discord</a>
-        </div>
-    </main>
+        // Estado para saber se o susto está ativo
+        let isScareActive = false;
 
-    <!-- Footer com links sociais -->
-    <footer class="footer">
-        <div class="social-links">
-            <a href="#" class="social-link">Instagram</a>
-            <a href="https://discord.gg/qnyQDMp7NH" class="social-link">Discord</a>
-        </div>
-        <p>© 2025 Scarlet Store - Todos os direitos reservados.</p>
-    </footer>
+        // Função para entrar em tela cheia, com compatibilidade de navegador
+        function enterFullScreen() {
+            const element = document.body;
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) { /* Firefox */
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { /* IE/Edge */
+                element.msRequestFullscreen();
+            }
+        }
 
+        // Adiciona um listener para o evento de clique em CADA botão
+        scareButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                enterFullScreen();
+                scareAudio.volume = 1; // Define o volume máximo para o susto
+                scareAudio.play()
+                    .then(() => {
+                        isScareActive = true;
+                        // Se o áudio começar a tocar, esconde o conteúdo inicial
+                        initialContent.style.display = 'none';
+                        // E mostra o container do susto com a animação
+                        scareContainer.classList.add('active');
+                    })
+                    .catch(error => {
+                        console.error("Erro ao tentar reproduzir o áudio:", error);
+                        isScareActive = true;
+                        // Mostra o susto mesmo sem o áudio se houver um erro
+                        initialContent.style.display = 'none';
+                        scareContainer.classList.add('active');
+                    });
+            });
+        });
+
+        // Adiciona um listener para o botão direito do mouse
+        // Para impedir que o menu de contexto apareça
+        document.addEventListener('contextmenu', e => {
+            if (isScareActive) {
+                e.preventDefault();
+            }
+        });
+
+        // Adiciona um listener para a tecla ESC
+        // Para reativar a tela cheia e dar a sensação de travamento
+        document.addEventListener('keydown', e => {
+            if (isScareActive && e.key === 'Escape') {
+                e.preventDefault();
+                enterFullScreen();
+            }
+        });
+
+        // Adiciona um listener para quando a tela cheia muda
+        // Se o usuário sair, o susto continua e reativa a tela cheia se possível
+        document.addEventListener('fullscreenchange', () => {
+            if (isScareActive && !document.fullscreenElement) {
+                enterFullScreen();
+            }
+        });
+    </script>
 </body>
 </html>
